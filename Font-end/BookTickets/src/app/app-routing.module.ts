@@ -15,7 +15,9 @@ import { RulesComponent } from './policy/rules/rules.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { SuccessComponent } from './account/success/success.component';
 import { AddminComponent } from './account/addmin/addmin.component';
-import { CrudAccountComponent } from './account/addmin/crud-account/crud-account.component';
+import { SelectSeatReturnAwayComponent } from './book-tickets/select-seat-return-away/select-seat-return-away.component';
+import { PayTwoWayComponent } from './book-tickets/pay-two-way/pay-two-way.component';
+
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -24,7 +26,7 @@ const routes: Routes = [
   {path:'news', component:NewsListComponent},
   {path:'news/details', component:NewsDetailsComponent},
   {path:'schedule', component:ScheduleComponent},
-  {path:'schedule/detail', component:DetailComponent},
+  {path:'schedule/detail/:id', component:DetailComponent},
   {path:'booktickets/select-route', component:SelectRouteComponent},
   {path:'booktickets/select-seat', component:SelectSeatComponent},
   {path:'booktickets/infor-customer', component:InforCustomerComponent},
@@ -33,7 +35,8 @@ const routes: Routes = [
   {path:'invoice', component:InvoiceComponent},
   {path:'login/customer/:email', component:SuccessComponent},
   {path:'login/admin/:email', component:AddminComponent},
-  {path:'login/admin/account', component:CrudAccountComponent},
+  {path:'booktickets/select-seat-two-way', component:SelectSeatReturnAwayComponent},
+  {path:'booktickets/pay-two-way', component:PayTwoWayComponent},
 ];
 
 @NgModule({

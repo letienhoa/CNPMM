@@ -19,7 +19,8 @@ import { PayComponent } from './book-tickets/pay/pay.component';
 import { RulesComponent } from './policy/rules/rules.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 
-import { BookTicketsService } from "../../src/app/shared/book-tickets.service";
+import {HttpClientModule} from '@angular/common/http'; 
+
 import { SuccessComponent } from './account/success/success.component';
 import { BookTicketComponent } from './account/success/book-ticket/book-ticket.component';
 import { HistoryComponent } from './account/success/history/history.component';
@@ -28,7 +29,16 @@ import { InforLoginComponent } from './account/success/infor-login/infor-login.c
 import { InforPersonalComponent } from './account/success/infor-personal/infor-personal.component';
 import { SelectPayComponent } from './account/success/pay/select-pay/select-pay.component';
 import { AddminComponent } from './account/addmin/addmin.component';
-import { CrudAccountComponent } from './account/addmin/crud-account/crud-account.component';
+
+import { BookService } from '../../src/app/shared/book.service';
+import {LogInService} from '../../src/app/shared/log-in.service';
+import {AdminService  } from "../../src/app/shared/admin.service";
+import { PaypallComponent } from './paypall/paypall.component';
+import { SelectSeatReturnAwayComponent } from './book-tickets/select-seat-return-away/select-seat-return-away.component';
+import { PayTwoWayComponent } from './book-tickets/pay-two-way/pay-two-way.component';
+import { PaypallTwoWayComponent } from './paypall-two-way/paypall-two-way.component';
+
+
 
 
 @NgModule({
@@ -57,16 +67,22 @@ import { CrudAccountComponent } from './account/addmin/crud-account/crud-account
     InforPersonalComponent,
     SelectPayComponent,
     AddminComponent,
-    CrudAccountComponent,
+    PaypallComponent,
+    SelectSeatReturnAwayComponent,
+    PayTwoWayComponent,
+    PaypallTwoWayComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
    
   ],
-  providers: [BookTicketsService],
+  providers: [LogInService,BookService,AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

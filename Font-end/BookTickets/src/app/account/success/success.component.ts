@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LogInService } from 'src/app/shared/log-in.service';
 
 @Component({
   selector: 'app-success',
@@ -9,18 +10,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SuccessComponent implements OnInit {
 
-  index:any
-  constructor(private route: ActivatedRoute) { }
+  logIn;
+  taiKhoan = "";
+  index:any;
+  customer;
+  constructor(private route: ActivatedRoute, private service: LogInService) { }
 
   ngOnInit(): void {
-    const itemId = this.route.snapshot.params['email'];
+    this.taiKhoan = this.route.snapshot.params['email'];
     this.load()
   }
 
 
   load(){
     this.loadChange(0)
-
+    this.logIn =  JSON.parse(sessionStorage.getItem('login'));
+    this.getInforCustomerById();
   }
 
   loadChange(index:any){
@@ -32,5 +37,16 @@ export class SuccessComponent implements OnInit {
     chil[index].classList.add('change')
     this.index = index
   }
+
+  getInforCustomerById(){
+    this.service.getInforCustomer(this.logIn.Token,this.logIn.id).subscribe(
+      data => {
+        this.customer= data.data
+        sessionStorage.setItem("customerInfor",JSON.stringify(this.customer));
+      }
+    );
+  }
+
+
 
 }
